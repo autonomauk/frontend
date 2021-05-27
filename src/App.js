@@ -30,11 +30,12 @@ class App extends React.Component {
 
   handleLogout() {
     const { cookies } = this.props;
-
+    
     fetch('/api/logout',
       {
-        method: 'POST',
-        body: { id: cookies.id }
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: cookies.get('id') })
       })
       .then(res => {
         cookies.remove('id');
