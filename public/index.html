@@ -40,4 +40,21 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyAfF7cyBgmC7TibWSqcclYenymrZsWXJ1s",
+      authDomain: "spotifyplaylister-1ca75.firebaseapp.com",
+      projectId: "spotifyplaylister-1ca75",
+      storageBucket: "spotifyplaylister-1ca75.appspot.com",
+      messagingSenderId: "306255867622",
+      appId: "1:306255867622:web:43762fce0a1af31cbcd527",
+      measurementId: "G-JXBL7XWBQ6"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+    
 </html>
