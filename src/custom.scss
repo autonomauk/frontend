@@ -1,8 +1,15 @@
 // Override default variables before the import
-$body-bg: #fff;
+$body-bg: #1DB954;
+$body-color: #fff;
+
+$theme-colors: (
+  "primary": #fff
+);
+
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
 
 .cursor-pointer {
   cursor: pointer;
 }
+
