@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.6.0",
     "moment": "^2.29.1",
     "node-sass": "^6.0.0",
     "query-string": "^4.3.4",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.6.1",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
-    "react-scripts": "^4.0.3"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "react-wavify": "^1.5.2"
   },
   "optionalDependencies": {
     "fsevents": "^2.1.2"
@@ -25,7 +30,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://127.0.0.1/api",
   "browserslist": {
     "production": [
       ">0.2%",
