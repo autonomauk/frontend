@@ -35,7 +35,7 @@ class User extends React.Component {
 
     handleAccountDelete(){
         console.log('Deleting ', this.state.jwt)
-        fetch('/settings/me', {
+        fetch('/api/settings/me', {
             method:'DELETE',
             headers:{
                 'jwt':this.state.jwt
