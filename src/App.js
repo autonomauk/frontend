@@ -8,6 +8,8 @@ import Login from './components/login/Login';
 import User from './components/user/User';
 import BottomBar from "./components/bottom_bar/BottomBar";
 
+import { Col } from 'react-bootstrap';
+
 class App extends React.Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -23,18 +25,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App container">
-        <Background />
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-xs-12 col-sm-8 col-md-8 offset-md-2">
-              <h1 id="title" className='display-3'>Spotify Playlister</h1>
-              <p>This app adds any new <b>favourited/saved</b> track to a monthly playlist once you "liked" it on Spotify. This generally takes 1-2 minutes to update. Other than logging in, there is nothing else for you to do! Sit back and relax.</p>
-              {this.state.jwt ? <User /> : <Login />}
-            </div>
-          </div>
+      <div id='App'>
+        <div className="content">
+          <Col xs={12} sm={8} md={8} lg={8} id='app-col'>
+            <h1 id="title" className='display-3'>Spotify Playlister</h1>
+            <p>This app adds any new <b>favourited/saved</b> track to a monthly playlist once you "liked" it on Spotify. This generally takes 1-2 minutes to update. Other than logging in, there is nothing else for you to do! Sit back and relax.</p>
+            {this.state.jwt ? <User /> : <Login />}
+          </Col>
+
         </div>
-        <BottomBar />
+        <BottomBar className='footer' />
+        <Background />
       </div>
     )
   }
