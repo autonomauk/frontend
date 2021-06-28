@@ -89,7 +89,7 @@ class User extends React.Component {
 
     render() {
         return (
-            <Col>
+            <Col id='user-col'>
                 <Row className='justify-content-center'>
                     <Dropdown id='playlist-name-dropdown'>
                         <Dropdown.Toggle as={this.settingsToggle}>Playlist Naming Convention</Dropdown.Toggle>

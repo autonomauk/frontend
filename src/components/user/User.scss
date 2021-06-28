@@ -1,11 +1,15 @@
 .row {
-    padding: 16px;
+  padding: 16px;
 }
 
-#delete-modal{
-    color:#000
+#delete-modal {
+  color: #000;
 }
 
-#delete-modal-cancel-btn{
-    color:#000;
+#delete-modal-cancel-btn {
+  color: #000;
+}
+
+#user-col {
+  flex-grow: 0;
 }
