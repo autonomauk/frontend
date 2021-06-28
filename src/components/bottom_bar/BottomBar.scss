@@ -1,8 +1,22 @@
-.footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100vw;
-  text-align: center;
-  height:min-content;
+#info-row {
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
+}
+
+.info-col{
+  display: flex;
+  white-space:nowrap;
+  width: fit-content;
+  margin-inline: 8px;
+}
+
+a { 
+  height:24px;
+}
+
+footer{
+  background-color: #ffffff33;
 }

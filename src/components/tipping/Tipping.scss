@@ -1,0 +1,28 @@
+.tipping-row{
+    justify-content: space-evenly;
+    width: 100%;
+    height: fit-content;
+    padding: 0;
+}
+
+.tipping-col{
+    flex-wrap: nowrap;
+    padding-inline: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.tooltip > div.tooltip-inner {
+  background-color: #ffffffdd !important;
+  color: black !important;
+  border-color: transparent;
+}
+
+.tooltip.show {
+  opacity: 1 !important;
+}
+
+.tooltip > div.arrow::before {
+  border-top-color: #ffffffdd !important;
+  color: #ffffffdd !important;
+}
