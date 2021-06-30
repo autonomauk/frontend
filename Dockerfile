@@ -15,7 +15,7 @@ COPY package-lock.json /usr/src/app
 RUN npm ci
 
 # Get all the code needed to run the app
-COPY . /usr/src/app
+VOLUME .:/usr/src/app
 
 # Expose the port the app runs in
 EXPOSE 3000
