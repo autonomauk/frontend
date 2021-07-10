@@ -6,23 +6,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {
-  font-family: 'Gotham';
-  src: url('./fonts/gotham/GothamMedium.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Gotham';
-  src: url('./fonts/gotham/GothamBold.ttf') format('truetype');
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: 'Gotham';
-  src: url('./fonts/gotham/GothamLight.ttf') format('truetype');
-  font-weight: light;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

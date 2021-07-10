@@ -19,9 +19,9 @@ export default class Tipping extends React.Component{
         }
         >
         <Row className='tipping-row'>
-            <Row className='tipping-col'><img src={bitcoin} alt="BTC logo" height='24'></img>&#160;{process.env.REACT_APP_BITCOIN_ADDRESS}</Row>
-            <Row className='tipping-col'><img src={ethereum} alt="ETH logo" height='24'></img>&#160;{process.env.REACT_APP_ETHEREUM_ADDRESS}</Row>
-            <Row className='tipping-col'><img src={dogecoin} alt="DOGE logo" height='24'></img>&#160;{process.env.REACT_APP_DOGECOIN_ADDRESS}</Row>
+            <Row className='tipping-col'><img src={bitcoin} alt="BTC logo" height='24' width='24'></img>&#160;{process.env.REACT_APP_BITCOIN_ADDRESS}</Row>
+            <Row className='tipping-col'><img src={ethereum} alt="ETH logo" height='24' width='24'></img>&#160;{process.env.REACT_APP_ETHEREUM_ADDRESS}</Row>
+            <Row className='tipping-col'><img src={dogecoin} alt="DOGE logo" height='24' width='24'></img>&#160;{process.env.REACT_APP_DOGECOIN_ADDRESS}</Row>
         </Row>
         </OverlayTrigger>
     }
