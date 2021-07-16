@@ -11,6 +11,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import './User.scss';
+import TrackLog from '../track_log/TrackLog';
 
 class User extends React.Component {
     static propTypes = {
@@ -105,6 +106,7 @@ class User extends React.Component {
                     <div style={{width:'16px'}}></div>
                     <Button variant="danger" onClick={this.openModal.bind(this)}><DeleteForeverIcon/> Account</Button>
                 </Row>
+                <TrackLog jwt={this.state.jwt}/>
             </Col>
         )
     }
