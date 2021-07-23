@@ -26,13 +26,13 @@ export default function TrackLog(props) {
         loading ?
             <Spinner animation="border" />
             :
-                <div>
-                    <h4>History</h4>
-                    <div id='break' />
-                                <div id='track-list'>
-                    {track_logs.map((track_log, idx) => <Track key={'track_' + idx} track_log={track_log} />)}
-                                </div>
+            <div>
+                <h4>History</h4>
+                <div id='break' />
+                <div id='track-list'>
+                    {track_logs.length>0?track_logs.map((track_log, idx) => <Track key={'track_' + idx} track_log={track_log} />):"Nothing here yet. Get liking!"}
                 </div>
+            </div>
     }
     </Col>
 }
@@ -45,15 +45,15 @@ function Track(props) {
     const artist_url = "https://open.spotify.com/artist/" + track.artists[0].uri.split(':').pop();
     const playlist_url = "https://open.spotify.com/playlist/" + playlist.uri.split(':').pop();
 
-    const artists_str = track.artists.length == 1 ? 
-        track.artists[0].name 
-        : 
+    const artists_str = track.artists.length == 1 ?
+        track.artists[0].name
+        :
         track.artists.map((artist, _) => artist.name).join(', ');
 
     const addedAt_str = moment(createdAt, 'YYYY-MM-DDThh:mm:ss.s').fromNow()
-    console.log(addedAt_str,createdAt)
+    console.log(addedAt_str, createdAt)
     return <Row className='track-row'>
-        <Col className="track-img-col"><a href={album_url} className='track-img'><img src={track.album.image_url} className='track-img'  /></a></Col>
+        <Col className="track-img-col"><a href={album_url} className='track-img'><img src={track.album.image_url} className='track-img' /></a></Col>
         <Col className='track-text-col'>
             <div className="track-text">
                 <a href={track_url}>

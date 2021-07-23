@@ -23,8 +23,19 @@ class User extends React.Component {
         const { cookies } = props;
         this.state = {
             jwt: cookies.get('jwt') || undefined,
-            showDeleteAccountModal: false
+            showDeleteAccountModal: false,
+            settings: undefined
         };
+    }
+
+    componentDidMount() {
+        fetch('/api/me/settings', {
+            method: 'GET',
+            headers: {
+                'jwt': this.state.jwt
+            }
+        }).then(res => res.json())
+            .then(res => {console.log(res);this.setState({ settings: res })})
     }
 
     handleLogout() {
@@ -34,21 +45,20 @@ class User extends React.Component {
         window.location.reload()
     }
 
-    handleAccountDelete(){
+    handleAccountDelete() {
         console.log('Deleting ', this.state.jwt)
         fetch('/api/me', {
-            method:'DELETE',
-            headers:{
-                'jwt':this.state.jwt
+            method: 'DELETE',
+            headers: {
+                'jwt': this.state.jwt
             }
-        }).then(res=>{
+        }).then(res => {
             this.handleLogout();
         })
     }
 
     openModal = () => this.setState({ showDeleteAccountModal: true });
     closeModal = () => this.setState({ showDeleteAccountModal: false });
-
 
     buildDeleteAccountAreYouSureModal() {
         const handleCancel = () => {
@@ -88,25 +98,44 @@ class User extends React.Component {
         </Button>
     ))
 
+    handleEnableDisableAutonoma() {
+        fetch('/api/me/settings/enabled', {
+            method: 'PATCH',
+            headers:
+            {
+                enabled: !this.state.settings.enabled,
+                jwt: this.state.jwt
+            }
+        }).then(res => res.json())
+            .then(res => this.setState(oldState => ({ ...oldState, settings: { ...oldState.settings, enabled: res } })))
+
+    }
+
     render() {
         return (
             <Col id='user-col'>
                 <Row className='justify-content-center'>
                     <Dropdown id='playlist-name-dropdown'>
-                        <Dropdown.Toggle as={this.settingsToggle}>Playlist Naming Convention</Dropdown.Toggle>
+                        <Dropdown.Toggle as={this.settingsToggle}> Playlist Naming Convention</Dropdown.Toggle>
                         <Dropdown.Menu>
                             <Dropdown.Item>Monthly (currently {moment().format("MMMM YY")})</Dropdown.Item>
                             {/* TODO: Add more options */}
                         </Dropdown.Menu>
                     </Dropdown>
+
                 </Row>
+
+                    {typeof this.state.settings === "undefined"?
+                    <Button variant='outline-secondary' enabled='false'>Loading...</Button>:
+                    <Button onClick={this.handleEnableDisableAutonoma.bind(this)} variant={this.state.settings.enabled?'outline-warning':'success'}> {this.state.settings.enabled?"Disable":"Enable"} Autonoma</Button>}
+                    
                 <Row className='justify-content-center'>
                     {this.buildDeleteAccountAreYouSureModal()}
-                    <Button variant='outline-warning' onClick={this.handleLogout.bind(this)}><ExitToAppIcon/> Log Out</Button>
-                    <div style={{width:'16px'}}></div>
-                    <Button variant="danger" onClick={this.openModal.bind(this)}><DeleteForeverIcon/> Account</Button>
+                    <Button variant='outline-warning' onClick={this.handleLogout.bind(this)}><ExitToAppIcon /> Log Out</Button>
+                    <div style={{ width: '16px' }}></div>
+                    <Button variant="danger" onClick={this.openModal.bind(this)}><DeleteForeverIcon /> Account</Button>
                 </Row>
-                <TrackLog jwt={this.state.jwt}/>
+                <TrackLog jwt={this.state.jwt} />
             </Col>
         )
     }
