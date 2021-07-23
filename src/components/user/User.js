@@ -135,7 +135,7 @@ class User extends React.Component {
                     <div style={{ width: '16px' }}></div>
                     <Button variant="danger" onClick={this.openModal.bind(this)}><DeleteForeverIcon /> Account</Button>
                 </Row>
-                <TrackLog jwt={this.state.jwt} />
+                <TrackLog jwt={this.state.jwt}/>
             </Col>
         )
     }
