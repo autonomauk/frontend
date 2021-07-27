@@ -50,8 +50,7 @@ function Track(props) {
         :
         track.artists.map((artist, _) => artist.name).join(', ');
 
-    const addedAt_str = moment(createdAt, 'YYYY-MM-DDThh:mm:ss.s').fromNow()
-    console.log(addedAt_str, createdAt)
+    const addedAt_str = moment(createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSSSS').fromNow()
     return <Row className='track-row'>
         <Col className="track-img-col"><a href={album_url} className='track-img'><img src={track.album.image_url} className='track-img' /></a></Col>
         <Col className='track-text-col'>

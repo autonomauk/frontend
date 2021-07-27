@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate, render } from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -7,11 +7,15 @@ import { CookiesProvider } from "react-cookie";
 
 import './custom.scss';
 
-ReactDOM.render(
-  <CookiesProvider>
-    <App />
-  </CookiesProvider>,
-  document.getElementById('root'));
+const rootElement = document.getElementById("root");
+
+const element = <CookiesProvider><App/></CookiesProvider>
+
+if (rootElement.hasChildNodes()) {
+  hydrate(element, rootElement);
+} else {
+  render(element, rootElement);
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
