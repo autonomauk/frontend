@@ -6,10 +6,6 @@ import { Row, Col, Button, Dropdown, Modal } from 'react-bootstrap';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
-import SettingsIcon from '@material-ui/icons/Settings';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-
 import './User.scss';
 import TrackLog from '../track_log/TrackLog';
 
@@ -92,7 +88,7 @@ class User extends React.Component {
             e.preventDefault();
             onClick(e);
         }}>
-            <SettingsIcon />
+            <i class="fas fa-cog"></i> 
             {children}
             &#x25bc;
         </Button>
@@ -131,9 +127,9 @@ class User extends React.Component {
                     
                 <Row className='justify-content-center'>
                     {this.buildDeleteAccountAreYouSureModal()}
-                    <Button variant='outline-warning' onClick={this.handleLogout.bind(this)}><ExitToAppIcon /> Log Out</Button>
+                    <Button variant='outline-warning' onClick={this.handleLogout.bind(this)}><i class="fas fa-sign-out-alt"></i> Log Out</Button>
                     <div style={{ width: '16px' }}></div>
-                    <Button variant="danger" onClick={this.openModal.bind(this)}><DeleteForeverIcon /> Account</Button>
+                    <Button variant="danger" onClick={this.openModal.bind(this)}><i class="fas fa-trash"></i> Account</Button>
                 </Row>
                 <TrackLog jwt={this.state.jwt}/>
             </Col>

@@ -1,22 +1,52 @@
-#info-row {
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: space-evenly;
+.bottom-bar {
+  width: 100%;
   padding: 0;
   margin: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: min-content min-content;
+  gap: 8px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . ."
+    "BTC ETH DOGE"
+    "PRIVACY COPYRIGHT TOS";
+
+  justify-content: center; 
+  align-content: center; 
+  justify-items: center; 
+  align-items: center;
+
+  background-color: #1a1a1abd;
+
+  padding-top: 2px;
 }
 
-.info-col{
-  display: flex;
-  white-space:nowrap;
-  width: fit-content;
-  margin-inline: 8px;
+.BTC { grid-area: BTC; }
+
+.ETH { grid-area: ETH; }
+
+.DOGE { grid-area: DOGE; }
+
+.PRIVACY { grid-area: PRIVACY; }
+
+.COPYRIGHT { grid-area: COPYRIGHT; }
+
+.TOS { grid-area: TOS; }
+
+.donate-img {
+  height: 1.3rem;
+  width: 1.3rem;
+  transition: .1s;
 }
 
-a { 
-  height:24px;
+.donate-img:hover{
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
-footer{
-  background-color:#232323;
+a {
+  font-size: 0.7rem;
+  text-align: center;
 }

@@ -1,7 +1,5 @@
 import React from 'react';
 import { Col, Spinner, Row } from 'react-bootstrap';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import './TrackLog.scss';
 import moment from 'moment';
 

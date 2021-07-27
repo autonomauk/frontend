@@ -5,7 +5,7 @@ import './Login.scss';
 
 function LoginButton() {
     return <a href={'/api/login'}>
-        <Button type="button" variant='primary'>Login with Spotify!</Button>
+        <Button type="button" variant='primary'>Login  <i class="fab fa-spotify"></i></Button>
     </a>
 }
 
@@ -14,4 +14,3 @@ export default class Login extends React.Component {
         return <LoginButton/>
     }
 }
-

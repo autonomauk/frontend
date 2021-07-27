@@ -29,7 +29,7 @@ class App extends React.Component {
         <div className="content">
           <Col xs={12} sm={8} md={8} lg={5} id='app-col'>
             <h1 id="title" className='display-3'>AUTONOMA</h1>
-            <p>This app adds any new <b>favourited/saved</b> track to a monthly playlist once you "liked" it on Spotify. This generally takes 1-2 minutes to update. Other than logging in, there is nothing else for you to do! Sit back and relax.</p>
+            <p>We automate your playlists through normal Spotify features. <i class="fas fa-thumbs-up"></i> a song on the go and let our algorithms deal with the rest. Choose from multiple settings to make Autonoma behave just the way you want it to!</p>
             {this.state.jwt ? <User /> : <Login />}
           </Col>
 
