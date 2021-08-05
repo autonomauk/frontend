@@ -31,7 +31,7 @@ class User extends React.Component {
                 'jwt': this.state.jwt
             }
         }).then(res => res.json())
-            .then(res => {console.log(res);this.setState({ settings: res })})
+            .then(res => this.setState({ settings: res }));
     }
 
     handleLogout() {
@@ -88,7 +88,7 @@ class User extends React.Component {
             e.preventDefault();
             onClick(e);
         }}>
-            <i class="fas fa-cog"></i> 
+            <i className='fas fa-cog'/> 
             {children}
             &#x25bc;
         </Button>
@@ -127,9 +127,9 @@ class User extends React.Component {
                     
                 <Row className='justify-content-center'>
                     {this.buildDeleteAccountAreYouSureModal()}
-                    <Button variant='outline-warning' onClick={this.handleLogout.bind(this)}><i class="fas fa-sign-out-alt"></i> Log Out</Button>
+                    <Button variant='outline-warning' onClick={this.handleLogout.bind(this)}><i className="fas fa-sign-out-alt"></i> Log Out</Button>
                     <div style={{ width: '16px' }}></div>
-                    <Button variant="danger" onClick={this.openModal.bind(this)}><i class="fas fa-trash"></i> Account</Button>
+                    <Button variant="danger" onClick={this.openModal.bind(this)}><i className="fas fa-trash"></i> Account</Button>
                 </Row>
                 <TrackLog jwt={this.state.jwt}/>
             </Col>

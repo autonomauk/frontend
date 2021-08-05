@@ -1,3 +1,5 @@
+@import './base';
+
 $fh:24px;
 
 html{
@@ -17,6 +19,7 @@ body{
 #title {
   font-family: "Gotham";
   font-weight: bold;
+  @include font-size(4rem);
 }
 
 .content {

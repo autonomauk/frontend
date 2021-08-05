@@ -23,13 +23,13 @@ function copyCryptoToClipboard(crypto, str){
 export default class BottomBar extends React.Component {
     render() {
         return (<footer>
-            <div class="bottom-bar">
-                <div class="BTC donate-img"><a onClick={() => copyCryptoToClipboard(CRYPTOS.BTC, process.env.REACT_APP_BITCOIN_ADDRESS)}><img src={bitcoin} alt="BTC logo" height='100%' width='100%'/></a></div>
-                <div class="ETH donate-img"><a onClick={() => copyCryptoToClipboard(CRYPTOS.ETH, process.env.REACT_APP_ETHEREUM_ADDRESS)}><img src={ethereum} alt="ETH logo" height='100%' width='100%'/></a></div>
-                <div class="DOGE donate-img"><a onClick={() => copyCryptoToClipboard(CRYPTOS.DOGE,process.env.REACT_APP_DOGECOIN_ADDRESS)}><img src={dogecoin} alt="DOGE logo" height='100%' width='100%'/></a></div>
-                <div class="PRIVACY website-text"><a href='/privacy.html'>Privacy Policy</a></div>
-                <div class="COPYRIGHT website-text"><a href='https://janhendrikewers.uk'>&#169; {moment().format('YYYY')} Jan-Hendrik Ewers</a></div>
-                <div class="TOS website-text"><a href='/TOS.html'>Terms of Service</a></div>
+            <div className="bottom-bar">
+                <div className="BTC donate-img"><a href={"bitcoin:"+process.env.REACT_APP_BITCOIN_ADDRESS} onClick={() => copyCryptoToClipboard(CRYPTOS.BTC, process.env.REACT_APP_BITCOIN_ADDRESS)}><img src={bitcoin} alt="BTC logo" height='100%' width='100%'/></a></div>
+                <div className="ETH donate-img"><a href={"ethereum:"+process.env.REACT_APP_ETHEREUM_ADDRESS} onClick={() => copyCryptoToClipboard(CRYPTOS.ETH, process.env.REACT_APP_ETHEREUM_ADDRESS)}><img src={ethereum} alt="ETH logo" height='100%' width='100%'/></a></div>
+                <div className="DOGE donate-img"><a href={"doge:"+process.env.REACT_APP_DOGECOIN_ADDRESS} onClick={() => copyCryptoToClipboard(CRYPTOS.DOGE,process.env.REACT_APP_DOGECOIN_ADDRESS)}><img src={dogecoin} alt="DOGE logo" height='100%' width='100%'/></a></div>
+                <div className="PRIVACY website-text"><a className='link' href='/privacy.html'>Privacy Policy</a></div>
+                <div className="COPYRIGHT website-text"><a className='link' href='https://janhendrikewers.uk'>&#169; {moment().format('YYYY')} Jan-Hendrik Ewers</a></div>
+                <div className="TOS website-text"><a className='link' href='/TOS.html'>Terms of Service</a></div>
             </div>
         </footer>)
     }

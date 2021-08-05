@@ -31,30 +31,23 @@
     <!-- Specifically SEO -->
     <link rel="canonical" href="%PUBLIC_URL%" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Resources -->
+    <script src="https://kit.fontawesome.com/753f20396f.js" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JF6YPL776L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '');
+    </script>
   </head>
 
   <link rel="stylesheet" href="%PUBLIC_URL%/index.css">
   <link rel="preload" href="%PUBLIC_URL%/fonts/gotham/GothamBold.ttf" as="font" type="font/ttf" crossorigin>
-  <script src="https://kit.fontawesome.com/753f20396f.js" crossorigin="anonymous"></script>
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
-  
-  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyAfF7cyBgmC7TibWSqcclYenymrZsWXJ1s",
-      authDomain: "spotifyplaylister-1ca75.firebaseapp.com",
-      projectId: "spotifyplaylister-1ca75",
-      storageBucket: "spotifyplaylister-1ca75.appspot.com",
-      messagingSenderId: "306255867622",
-      appId: "1:306255867622:web:43762fce0a1af31cbcd527",
-      measurementId: "G-JXBL7XWBQ6"
-    };
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
+
 </html>

@@ -6,8 +6,10 @@ $theme-colors: (
   "primary": #fff
 );
 
+$enable-responsive-font-sizes: true;
+
 // Import Bootstrap and its default variables
-@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/scss/bootstrap';
 
 .cursor-pointer {
   cursor: pointer;

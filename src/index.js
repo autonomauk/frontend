@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { CookiesProvider } from "react-cookie";
 
-import './custom.scss';
+import './base.scss';
 
 const rootElement = document.getElementById("root");
 

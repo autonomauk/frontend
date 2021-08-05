@@ -5,7 +5,7 @@ import './Login.scss';
 
 function LoginButton() {
     return <a href={'/api/login'}>
-        <Button type="button" variant='primary'>Login  <i class="fab fa-spotify"></i></Button>
+        <Button type="button" variant='primary'>Login  <i className="fab fa-spotify"></i></Button>
     </a>
 }
 
