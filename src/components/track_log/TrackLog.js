@@ -18,7 +18,7 @@ export default function TrackLog(props) {
             .then(setTrackLogs)
             .then(_ => setLoading(false))
             .catch(err => console.error(err));
-    }, []);
+    }, [jwt]);
 
     return <Col id='track-log'>{
         loading ?
@@ -43,14 +43,14 @@ function Track(props) {
     const artist_url = "https://open.spotify.com/artist/" + track.artists[0].uri.split(':').pop();
     const playlist_url = "https://open.spotify.com/playlist/" + playlist.uri.split(':').pop();
 
-    const artists_str = track.artists.length == 1 ?
+    const artists_str = track.artists.length === 1 ?
         track.artists[0].name
         :
         track.artists.map((artist, _) => artist.name).join(', ');
 
     const addedAt_str = moment(createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSSSS').fromNow()
     return <Row className='track-row'>
-        <Col className="track-img-col"><a href={album_url} className='track-img'><img src={track.album.image_url} className='track-img' /></a></Col>
+        <Col className="track-img-col"><a href={album_url} className='track-img'><img src={track.album.image_url} alt={"album: "+track.album.name} className='track-img' /></a></Col>
         <Col className='track-text-col'>
             <div className="track-text">
                 <a href={track_url}>
