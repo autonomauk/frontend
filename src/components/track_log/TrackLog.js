@@ -1,24 +1,25 @@
 import React from 'react';
-import { Col, Spinner, Row, Button } from 'react-bootstrap';
+import { Col, Spinner, Row } from 'react-bootstrap';
 import './TrackLog.scss';
 import moment from 'moment';
 
 export default function TrackLog(props) {
     const [track_logs, setTrackLogs] = React.useState([]);
     const [offset, setOffset] = React.useState(0);
-    let length = 10;
+    const length = 10;
     const [total, setTotal] = React.useState(Infinity);
     const [loading, setLoading] = React.useState(true);
     const { jwt } = props;
 
     React.useEffect(() => {
+        let tmp_len = length;
         if (total - offset < length) {
-            length = total - offset
+            tmp_len = total - offset
         }
-        fetch("/api/me/track_log?offset=" + offset + "&length=" + length, {
+        fetch("/api/me/track_log?offset=" + offset + "&length=" + tmp_len, {
             method: 'GET',
             headers: {
-                jwt: jwt
+                jwt: jwt 
             }
         }).then(res => res.json())
             .then(res => {
@@ -28,7 +29,7 @@ export default function TrackLog(props) {
             })
             .then(_ => setLoading(false))
             .catch(err => console.error(err));
-    }, [jwt, offset]);
+    }, [jwt, offset, total, track_logs]);
 
     const track_list_items = track_logs.map((track_log, idx) => <Track key={'track_' + idx} track_log={track_log} />)
     if (track_logs.length<total){
@@ -52,7 +53,6 @@ export default function TrackLog(props) {
 
 function Track(props) {
     const { createdAt, track, playlist } = props.track_log
-    const {idx} = props
 
     const track_url = "https://open.spotify.com/track/" + track.uri.split(":").pop();
     const album_url = "https://open.spotify.com/album/" + track.album.uri.split(':').pop();
