@@ -1,24 +1,39 @@
 import React from 'react';
-import { Col, Spinner, Row } from 'react-bootstrap';
+import { Col, Spinner, Row, Button } from 'react-bootstrap';
 import './TrackLog.scss';
 import moment from 'moment';
 
 export default function TrackLog(props) {
-    const [track_logs, setTrackLogs] = React.useState([])
-    const [loading, setLoading] = React.useState(true)
-    const { jwt } = props
+    const [track_logs, setTrackLogs] = React.useState([]);
+    const [offset, setOffset] = React.useState(0);
+    let length = 10;
+    const [total, setTotal] = React.useState(Infinity);
+    const [loading, setLoading] = React.useState(true);
+    const { jwt } = props;
 
     React.useEffect(() => {
-        fetch("/api/me/track_log", {
+        if (total - offset < length) {
+            length = total - offset
+        }
+        fetch("/api/me/track_log?offset=" + offset + "&length=" + length, {
             method: 'GET',
             headers: {
                 jwt: jwt
             }
         }).then(res => res.json())
-            .then(setTrackLogs)
+            .then(res => {
+                console.log("Res",res)
+                setTrackLogs(track_logs.concat(res.track_log));
+                setTotal(res.total);
+            })
             .then(_ => setLoading(false))
             .catch(err => console.error(err));
-    }, [jwt]);
+    }, [jwt, offset]);
+
+    const track_list_items = track_logs.map((track_log, idx) => <Track key={'track_' + idx} track_log={track_log} />)
+    if (track_logs.length<total){
+        track_list_items.push(<p id='more-text-button' onClick={()=>setOffset(offset+length)}>More <i class="fas fa-caret-down"></i></p>)
+    }
 
     return <Col id='track-log'>{
         loading ?
@@ -28,7 +43,7 @@ export default function TrackLog(props) {
                 <h4>History</h4>
                 <div id='break' />
                 <div id='track-list'>
-                    {track_logs.length>0?track_logs.map((track_log, idx) => <Track key={'track_' + idx} track_log={track_log} />):"Nothing here yet. Get liking!"}
+                    {track_logs.length > 0 ? track_list_items : "Nothing here yet. Get liking!"}
                 </div>
             </div>
     }
@@ -37,6 +52,7 @@ export default function TrackLog(props) {
 
 function Track(props) {
     const { createdAt, track, playlist } = props.track_log
+    const {idx} = props
 
     const track_url = "https://open.spotify.com/track/" + track.uri.split(":").pop();
     const album_url = "https://open.spotify.com/album/" + track.album.uri.split(':').pop();
@@ -50,7 +66,7 @@ function Track(props) {
 
     const addedAt_str = moment(createdAt, 'YYYY-MM-DDTHH:mm:ss.SSSSSS').fromNow()
     return <Row className='track-row'>
-        <Col className="track-img-col"><a href={album_url} className='track-img'><img src={track.album.image_url} alt={"album: "+track.album.name} className='track-img' /></a></Col>
+        <Col className="track-img-col"><a href={album_url} className='track-img'><img src={track.album.image_url} alt={"album: " + track.album.name} className='track-img' /></a></Col>
         <Col className='track-text-col'>
             <div className="track-text">
                 <a href={track_url}>

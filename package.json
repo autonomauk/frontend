@@ -1,6 +1,6 @@
 {
   "name": "Autonoma",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
