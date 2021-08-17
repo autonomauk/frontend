@@ -2,13 +2,11 @@ name: CI
 
 on:
   push:
-  pull
+  pull_request:
   workflow_dispatch:
 
 jobs:
   build:
-    env:
-      PUPPETEER_DOWNLOAD_PATH: ~/.npm/chromium
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
