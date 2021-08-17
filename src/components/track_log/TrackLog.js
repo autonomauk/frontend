@@ -6,7 +6,7 @@ import moment from 'moment';
 export default function TrackLog(props) {
     const [track_logs, setTrackLogs] = React.useState([]);
     const [offset, setOffset] = React.useState(0);
-    const length = 10;
+    let length = 10;
     const [total, setTotal] = React.useState(Infinity);
     const [loading, setLoading] = React.useState(true);
     const { jwt } = props;
@@ -29,7 +29,7 @@ export default function TrackLog(props) {
             })
             .then(_ => setLoading(false))
             .catch(err => console.error(err));
-    }, [jwt, offset, total, track_logs]);
+    }, [jwt, offset]); //eslint-disable-line
 
     const track_list_items = track_logs.map((track_log, idx) => <Track key={'track_' + idx} track_log={track_log} />)
     if (track_logs.length<total){
