@@ -39,15 +39,6 @@
     flex-grow: 0;
 }
 
-#more-text-button{
-  cursor: pointer;
-  padding-top: 0.5em;
-}
-
-#more-text-button:hover{
-  text-decoration: underline;
-}
-
 #track-list {
   display: flex;
   flex-direction: column;
