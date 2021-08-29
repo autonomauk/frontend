@@ -1,46 +1,21 @@
-import React from "react";
-import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
-import "./App.scss";
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  browserHistory,
+  Route,
+  Switch
+} from 'react-router-dom'
 
-import Background from './components/background/Background';
-import Login from './components/login/Login';
-import User from './components/user/User';
-import BottomBar from "./components/bottom_bar/BottomBar";
+import DefaultPage from './pages/DefaultPage/DefaultPage';
+import FourOhFourPage from './pages/FourOhFourPage/FourOhFourPage';
 
-import { Col } from 'react-bootstrap';
+const App = () => (
+  <Router history={browserHistory}>
+    <Switch>
+      <Route exact path="/" component={DefaultPage}/>
+      <Route path="/*" component={FourOhFourPage}/>
+    </Switch>
+  </Router>
+);
 
-import LogoWhite from './img/logo_white.svg'
-
-class App extends React.Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
-
-  constructor(props) {
-    super(props);
-    const { cookies } = props;
-    this.state = {
-      jwt: cookies.get('jwt') || undefined
-    };
-  }
-
-  render() {
-    return (
-      <div id='App'>
-        <div className="content">
-          <Col xs={12} sm={8} md={8} lg={5} id='app-col'>
-            <h1 id="title" ><img src={LogoWhite} id='title-logo' alt='Autonoma Logo'/> Autonoma</h1>
-            <p>We automate your playlists through normal Spotify features. <i className="fas fa-thumbs-up"></i> a song on the go and let our algorithms deal with the rest. Choose from multiple settings to make Autonoma behave just the way you want it to!</p>
-            {this.state.jwt ? <User /> : <Login />}
-          </Col>
-
-        </div>
-        <BottomBar className='footer' />
-        <Background />
-      </div>
-    )
-  }
-}
-
-export default withCookies(App);
+export default App;
