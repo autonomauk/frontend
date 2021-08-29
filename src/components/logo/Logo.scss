@@ -1,0 +1,12 @@
+@import '../../base';
+
+#title {
+  font-family: "Gotham";
+  font-weight: bold;
+  @include font-size(4rem);
+}
+
+#title-logo{
+  @include rfs(4rem, "max-width");
+  height: auto;
+}
