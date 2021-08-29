@@ -10,6 +10,10 @@ body{
   margin: 0;
 }
 
+p{
+  @include font-size(1rem);
+}
+
 #App{
   height: 100vh;
   display: grid;
@@ -20,6 +24,11 @@ body{
   font-family: "Gotham";
   font-weight: bold;
   @include font-size(4rem);
+}
+
+#title-logo{
+  @include rfs(4rem, "max-width");
+  height: auto;
 }
 
 .content {

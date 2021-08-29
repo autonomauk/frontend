@@ -10,6 +10,8 @@ import BottomBar from "./components/bottom_bar/BottomBar";
 
 import { Col } from 'react-bootstrap';
 
+import LogoWhite from './img/logo_white.svg'
+
 class App extends React.Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -28,7 +30,7 @@ class App extends React.Component {
       <div id='App'>
         <div className="content">
           <Col xs={12} sm={8} md={8} lg={5} id='app-col'>
-            <h1 id="title" >AUTONOMA</h1>
+            <h1 id="title" ><img src={LogoWhite} id='title-logo' alt='Autonoma Logo'/> Autonoma</h1>
             <p>We automate your playlists through normal Spotify features. <i className="fas fa-thumbs-up"></i> a song on the go and let our algorithms deal with the rest. Choose from multiple settings to make Autonoma behave just the way you want it to!</p>
             {this.state.jwt ? <User /> : <Login />}
           </Col>
