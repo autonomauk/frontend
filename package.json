@@ -1,8 +1,10 @@
 {
   "name": "Autonoma",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "dotenv": "^8.2.0",
@@ -18,14 +20,15 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-snap": "^1.23.0",
-    "react-wavify": "^1.5.2"
+    "react-wavify": "^1.5.2",
+    "rfs": "^9.0.5"
   },
   "optionalDependencies": {
     "fsevents": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && sed -i \"s/%REACTBUILDVERSION%/$( jq -r .version package.json )/g\" build/index.html && sed -i \"s/%REACTBUILDDATE%/$(date +%Y-%m-%d)-$(date +%T)/g\" build/index.html",
     "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

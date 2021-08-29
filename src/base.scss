@@ -11,6 +11,9 @@ $enable-responsive-font-sizes: true;
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap';
 
+// Import RFS seperately since Bootstrap doesn't use the version we want.
+@import "~rfs/scss";
+
 .cursor-pointer {
   cursor: pointer;
 }
