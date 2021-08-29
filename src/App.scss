@@ -1,7 +1,5 @@
 @import './base';
 
-$fh:24px;
-
 html{
   height: 100%;
 }
@@ -13,45 +11,6 @@ body{
 p{
   @include font-size(1rem);
 }
-
-#App{
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr auto;
-}
-
-#title {
-  font-family: "Gotham";
-  font-weight: bold;
-  @include font-size(4rem);
-}
-
-#title-logo{
-  @include rfs(4rem, "max-width");
-  height: auto;
-}
-
-.content {
-  padding-bottom: $fh;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  text-align: center;
-}
-
-#app-col{
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-}
-
 * {
   box-sizing: border-box;
-}
-
-.footer{
-  // padding-top: $fh;
-  grid-row-start: 2;
-  grid-row-end: 3;
 }
