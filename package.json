@@ -1,6 +1,6 @@
 {
   "name": "Autonoma",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -17,6 +17,7 @@
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-ga": "^3.3.0",
+    "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-snap": "^1.23.0",
