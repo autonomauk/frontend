@@ -19,11 +19,10 @@ export default function TrackLog(props) {
         fetch("/api/me/track_log?offset=" + offset + "&length=" + tmp_len, {
             method: 'GET',
             headers: {
-                jwt: jwt 
+                jwt: jwt
             }
         }).then(res => res.json())
             .then(res => {
-                console.log("Res",res)
                 setTrackLogs(track_logs.concat(res.track_log));
                 setTotal(res.total);
             })
@@ -31,9 +30,41 @@ export default function TrackLog(props) {
             .catch(err => console.error(err));
     }, [jwt, offset]); //eslint-disable-line
 
+    if (process.env.NODE_ENV === "development" && track_logs.length <= 4) {
+        while (track_logs.length <= 4) {
+            const track_log = {
+                track: {
+                    uri: 'asdasd:sadasd',
+                    name: 'test',
+
+                    album: {
+
+                        uri: 'asdasd:sadasd',
+                        name: 'test',
+                        image_url: 'localhost/favicon.ico'
+
+                    },
+                    artists: [
+                        {
+                            name: 'test',
+                            uri: 'sadasd:sadasd'
+                        }
+                    ]
+                },
+                playlist:{
+                    uri:'asdasd:sadasd',
+                    name:'test'
+                },
+                createdAt:"2030-10-21T10:10:10.111111"
+            }
+            track_logs.push(track_log)
+        }
+    }
+
+
     const track_list_items = track_logs.map((track_log, idx) => <Track key={'track_' + idx} track_log={track_log} />)
-    if (track_logs.length<total){
-        track_list_items.push(<p id='more-text-button' onClick={()=>setOffset(offset+length)}>More <i class="fas fa-caret-down"></i></p>)
+    if (track_logs.length < total) {
+        track_list_items.push(<p id='more-text-button' onClick={() => setOffset(offset + length)}>More <i class="fas fa-caret-down"></i></p>)
     }
 
     return <Col id='track-log'>{
