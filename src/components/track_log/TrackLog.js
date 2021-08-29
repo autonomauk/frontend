@@ -41,7 +41,7 @@ export default function TrackLog(props) {
 
                         uri: 'asdasd:sadasd',
                         name: 'test',
-                        image_url: 'localhost/favicon.ico'
+                        image_url: '/favicon.ico'
 
                     },
                     artists: [
