@@ -1,27 +1,12 @@
-#### Snippet of frontend(ReactJS)`DockerFile`
+# Autonoma - Frontend
+[![CI](https://github.com/autonomauk/frontend/actions/workflows/CI.yml/badge.svg)](https://github.com/autonomauk/frontend/actions/workflows/CI.yml)
+[![CD](https://github.com/autonomauk/frontend/actions/workflows/CD.yml/badge.svg)](https://github.com/autonomauk/frontend/actions/workflows/CD.yml)
 
-You will find this `DockerFile` inside **frontend** directory. 
+This repo contains the code for Autonoma's frontend.
 
-```bash
-# Create image based on the official Node image from dockerhub
-FROM node:10
-#Argument that is passed from docer-compose.yaml file
-ARG FRONT_END_PORT
-# Create app directory
-WORKDIR /usr/src/app
-#Echo the argument to check passed argument loaded here correctly
-RUN echo "Argument port is : $FRONT_END_PORT"
-# Copy dependency definitions
-COPY package.json /usr/src/app
-# Install dependecies
-RUN npm install
-# Get all the code needed to run the app
-COPY . /usr/src/app
-# Expose the port the app runs in
-EXPOSE ${FRONT_END_PORT}
-# Serve the app
-CMD ["npm", "start"]
-```
-##### Explanation of frontend(ReactJS) `DockerFile`
+## Run
 
-Frontend `DockerFile` is almost the same as Backend `DockerFile`.
+1. Install requirements with `npm ci`
+3. Run the reatt project with `npm start`
+
+For the best results use `docker-compose` in conjunction with the top-level repo https://github.com/autonomauk/autonoma.
