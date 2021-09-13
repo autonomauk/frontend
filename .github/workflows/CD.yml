@@ -1,4 +1,4 @@
-name: Build frontend
+name: CD
 
 on:
   create:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  CD:
     env:
       PUPPETEER_DOWNLOAD_PATH: ~/.npm/chromium
     runs-on: ubuntu-latest
