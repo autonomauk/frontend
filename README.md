@@ -7,6 +7,6 @@ This repo contains the code for Autonoma's frontend.
 ## Run
 
 1. Install requirements with `npm ci`
-3. Run the reatt project with `npm start`
+3. Run the React project with `npm start`
 
 For the best results use `docker-compose` in conjunction with the top-level repo https://github.com/autonomauk/autonoma.
