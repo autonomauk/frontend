@@ -1,4 +1,4 @@
-# Autonoma - Frontend
+# # [![Logo](https://spotify.janhendrikewers.uk/img/favicon-32x32.png)](https://spotify.janhendrikewers.uk) Autonoma - Frontend
 [![CI](https://github.com/autonomauk/frontend/actions/workflows/CI.yml/badge.svg)](https://github.com/autonomauk/frontend/actions/workflows/CI.yml)
 [![CD](https://github.com/autonomauk/frontend/actions/workflows/CD.yml/badge.svg)](https://github.com/autonomauk/frontend/actions/workflows/CD.yml)
 
