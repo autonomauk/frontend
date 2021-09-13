@@ -1,13 +1,54 @@
 name: CD
 
 on:
-  create:
+  push:
     tags:
-      - v*
+      - "v*.*.*"
   workflow_dispatch:
 
 jobs:
-  CD:
+  generate-changelog:
+    name: Generate changelog and update release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+          
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v1
+        id: git-cliff
+        with:
+          config: config/cliff.toml
+          args: -vv --latest --strip header
+        env:
+          OUTPUT: CHANGES.md
+      
+      # This step reads a file from repo and use it for body of the release
+      # This works on any self-hosted runner OS
+      - name: Read CHANGES.md and use it as a body of new release
+        id: read_changes
+        shell: bash
+        run: |
+          r=${{ secrets.(cat CHANGES.md)                    # <--- Read CHANGES.md (Provide correct path as per your repo)
+          r="${r//'%'/'%25'}"                               # Multiline escape sequences for %
+          r="${r//$'\n'/'%0A'}"                             # Multiline escape sequences for '\n'
+          r="${r//$'\r'/'%0D'}"                             # Multiline escape sequences for '\r'
+          echo "::set-output name=CHANGES_BODY::$r"         # <--- Set environment variable
+
+      - name: Upload the release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.get_version.outputs.VERSION }}
+          release_name: ${{ steps.get_version.outputs.VERSION }}
+          body: "${{ steps.read_changes.outputs.CHANGES_BODY }}"
+  deploy:
     env:
       PUPPETEER_DOWNLOAD_PATH: ~/.npm/chromium
     runs-on: ubuntu-latest
