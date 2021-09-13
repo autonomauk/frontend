@@ -35,7 +35,7 @@ jobs:
         id: read_changes
         shell: bash
         run: |
-          r=${{ secrets.(cat CHANGES.md)                    # <--- Read CHANGES.md (Provide correct path as per your repo)
+          r=$(cat CHANGES.md)                               # <--- Read CHANGES.md (Provide correct path as per your repo)
           r="${r//'%'/'%25'}"                               # Multiline escape sequences for %
           r="${r//$'\n'/'%0A'}"                             # Multiline escape sequences for '\n'
           r="${r//$'\r'/'%0D'}"                             # Multiline escape sequences for '\r'
@@ -48,6 +48,7 @@ jobs:
           tag: ${{ steps.get_version.outputs.VERSION }}
           release_name: ${{ steps.get_version.outputs.VERSION }}
           body: "${{ steps.read_changes.outputs.CHANGES_BODY }}"
+          
   deploy:
     env:
       PUPPETEER_DOWNLOAD_PATH: ~/.npm/chromium
