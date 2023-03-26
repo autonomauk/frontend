@@ -1,22 +1,21 @@
-# Create image based on the official Node image from dockerhub
-FROM node:lts-buster-slim
+# build environment
+FROM node:lts-buster-slim as build
+WORKDIR /app
 
-# Create app directory
-WORKDIR /usr/src/app
+RUN apt-get update && apt-get install -y python3 build-essential jq
 
-# Copy dependency definitions
-COPY package.json /usr/src/app
-COPY package-lock.json /usr/src/app
+ENV PATH /app/node_modules/.bin:$PATH
 
-# Install dependecies
-RUN npm ci
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
 
-# Redefine $APP_PATH otherwise its value is not passed through
-arg APP_PATH
-VOLUME ${APP_PATH}/frontend:/usr/src/app
+COPY . ./
 
-# Expose the port the app runs in
-EXPOSE 3000
+RUN npm run build
 
-# Serve the app
-CMD ["npm", "start"]
+# production environment
+FROM nginx:stable-alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
