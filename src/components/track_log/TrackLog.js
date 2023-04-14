@@ -51,11 +51,11 @@ export default function TrackLog(props) {
                         }
                     ]
                 },
-                playlist:{
-                    uri:'asdasd:sadasd',
-                    name:'test'
+                playlist: {
+                    uri: 'asdasd:sadasd',
+                    name: 'test'
                 },
-                createdAt:"2030-10-21T10:10:10.111111"
+                createdAt: "2030-10-21T10:10:10.111111"
             }
             track_logs.push(track_log)
         }
@@ -101,6 +101,7 @@ function Track(props) {
         <Col className='track-text-col'>
             <div className="track-text">
                 <a href={track_url}>
+                    <i className="fab fa-spotify"></i>
                     <strong>{track.name}</strong>
                 </a>
             </div>
