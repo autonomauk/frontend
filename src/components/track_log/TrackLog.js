@@ -102,7 +102,7 @@ function Track(props) {
             <div className="track-text">
                 <a href={track_url}>
                     <i className="fab fa-spotify"></i>
-                    <strong>{track.name}</strong>
+                    <strong> {track.name}</strong>
                 </a>
             </div>
             <div className="track-text">
