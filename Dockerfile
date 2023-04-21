@@ -1,5 +1,5 @@
 # build environment
-FROM node:lts-buster-slim as build
+FROM node:20-bullseye-slim as build
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y python3 build-essential jq
@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y python3 build-essential jq
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json ./
-COPY package-lock.json ./
 RUN npm install
 
 COPY . ./
